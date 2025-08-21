@@ -6,6 +6,7 @@
     --cor-texto-secundario: #606770;
     --cor-borda: #dcdfe3;
     --cor-acento: #007bff;
+    
 }
 
 * {
@@ -16,8 +17,6 @@
 body{
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     background-color: var(--cor-fundo);
-
-    /*Centralizando o componente da pagina para vizualizacao*/
     display: flex;
     justify-content: center;
     align-items: center;
@@ -27,9 +26,9 @@ body{
 .card{
     background-color: var(--cor-branco);
     border-radius: 10px;
-    box-shadow: 0 8px 24px rgba(0, 0,0,0.1); /*sombra da caixa*/
+    box-shadow: 0 8px 24px rgba(0, 0,0,0.1); 
     width: 320px;
-/*Aqui que comeca a magica da transformação*/
+
     transition: transform 0.3s ease,box-shadow 0.3s ease;
 
     overflow: hidden; /* */
@@ -38,19 +37,19 @@ body{
 
 /*3. Efeito de hover no cart*/
 .card :hover{
-    transform: translatev (-10px); /*Movimenta o card para cima ex 10px*/
-    box-shadow: 0 12px 32px rgba(0,0,0,0.2);
+    transform: translatev (-10px); 
+    box-shadow: 0 12px 32px rgba(0,0,0,0.15);
 }
 /*4. Estilos da imagem do card*/
 .card_image-container{
     width: 100%;
-    height: 100%; /*altura fixa para o container da imagem*/
+    height: 100%; /* altura fixa para o conteiner da imagem */
     
 }
 .card_image{
     width: 100%;
     height: 100%;
-    object-fit: cover; /*Cobre todo o container mantendo a proporcao/ Garante que a imagem cubra o espaço sem distorcer*/
+    object-fit: cover; 
 }
 /*5. estilos do titulo do card/ titulo e social)*/
 
@@ -58,34 +57,46 @@ body{
         padding: 24px;
     }
     .card_name{
-        font-size: 24px; /*1.5rem*/
+        font-size: 24px; 
         color: var(--cor-texto-primario);
         margin-bottom: 8px;
         font-weight: bold;
        
     }
     .card_title{
-        font-size: 1.0rem;
+        font-size: 1.0rem;/* 1 rem = 16px -> 1 rem é uma unidade relativa ou seja ela vai tentar colocar 16 px*/
         color: var(--cor-texto-secundario);
         margin-bottom: 24px;
     }
-    .card_social{
-        display: flex; /*ativa a flex box*/
-        justify-content: center; /*Centraliza os itens do eixo principal (horizontal)*/
-        gap: 10px; /*Espacamneto entre os icones sociais*/
-        
+/* 6. Estilos e Icones sociais(utilizando Flexbox */
+.card_social{
+    display: flex; /* ativa o Flexbox */
+    justify-content: center; /* Centraliza no eixo peincipal (horizontal */
+    gap: 16px;/* Espaçamentos entre itens */
+}
+
+.card_social a {
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    width: 40px;
+    height:40px;
+    color: var(--cor-acento);
+    border: 2px solid var(--cor-acento);
+    border-radius: 50%;
+    text-decoration: none;
+    font-weight: bolder;
+    transition: background-color 0.3s ease,color 0,3 ease;
+
+}
+.card_social a:hover{
+    background-color: var(--cor-acento);
+    color: var(--cor-branco);
+    border-color: var(--cor-borda);
+}
+/* 7. Desing Responsivo (nossa primeira media Query */
+@media (max-width:400px){
+    .card{
+        width: 90%;
     }
-    .card_social a {
-        display: flex; /**/
-        align-items: center;/*alinha os icones verticalmente*/
-        justify-content: center;/*centraliza os icones horizontalmente*/
-        width: 40px;/*largura fixa para os icones*/
-        height: 40px;/*largura fixa parea os icones*/
-        color: var(--cor-acento);
-        border: 2px solid var(--cor-acento);/*borda do icone*/
-        border-radius: 50%;/**/
-        font-size: 1.5rem;/**/
-        text-decoration: none;/*remove*/
-        font-weight: bold;/**/
-        transition: background-color 0.3s ease, color 0.3s ease;/**/
-    }
+}
